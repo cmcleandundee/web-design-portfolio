@@ -1,0 +1,171 @@
+:root {
+  --bg: #121212;
+  --surface: #1c1c1c;
+  --surface-soft: #252525;
+  --text: #e4e4e4;
+  --text-soft: #b8b8b8;
+  --border: #333333;
+  --accent: #f25f5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(242, 95, 92, 0.2), transparent 30%),
+    radial-gradient(circle at 100% 10%, rgba(255, 255, 255, 0.06), transparent 35%),
+    var(--bg);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(18, 18, 18, 0.95);
+}
+
+.navbar-dark .navbar-brand {
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text-soft);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus-visible {
+  color: var(--text);
+}
+
+.home-hero {
+  min-height: calc(100vh - 78px);
+}
+
+.vinyl-record {
+  width: min(72vw, 320px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 1.75rem;
+  border-radius: 50%;
+  position: relative;
+  border: 7px solid #0b0b0b;
+  background:
+    repeating-radial-gradient(circle, #111 0 10px, #1a1a1a 10px 20px, #101010 20px 30px),
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.2), transparent 36%);
+  box-shadow: 0 0 0 1px #2d2d2d, 0 20px 45px rgba(0, 0, 0, 0.45);
+  animation: spin 8s linear infinite;
+}
+
+.vinyl-record::before {
+  content: "";
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: radial-gradient(circle, #f25f5c 0 40%, #b93d3a 40% 100%);
+}
+
+.vinyl-record::after {
+  content: "";
+  width: 8%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: #0f0f0f;
+  border: 1px solid #424242;
+}
+
+.vinyl-record:hover {
+  animation-play-state: paused;
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-accent:hover,
+.btn-accent:focus-visible {
+  background-color: #ea4e4a;
+  border-color: #ea4e4a;
+  color: #fff;
+}
+
+.section-surface {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.profile-placeholder {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-soft);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    var(--surface-soft);
+  border: 1px dashed #4a4a4a;
+  border-radius: 10px;
+}
+
+.skills-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-soft);
+}
+
+.project-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.project-image-placeholder {
+  min-height: 170px;
+  border-radius: 8px;
+  border: 1px dashed #4a4a4a;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02)),
+    var(--surface-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-soft);
+  margin-bottom: 1rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--text-soft);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .home-hero {
+    min-height: calc(100vh - 70px);
+  }
+}
