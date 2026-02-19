@@ -240,6 +240,25 @@ body {
   border-radius: 999px;
 }
 
+.headline-links {
+  margin: 0;
+}
+
+.headline-links li {
+  margin-bottom: 0.3rem;
+}
+
+.headline-links a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: #7f7f7f;
+}
+
+.headline-links a:hover,
+.headline-links a:focus-visible {
+  text-decoration-color: #ffffff;
+}
+
 .project-image {
   width: 100%;
   aspect-ratio: 16 / 10;
