@@ -259,6 +259,24 @@ body {
   text-decoration-color: #ffffff;
 }
 
+.album-history {
+  border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 0.55rem 0.7rem;
+}
+
+.album-history summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.album-history p {
+  margin-top: 0.6rem;
+  color: #ffffff;
+}
+
 .project-image {
   width: 100%;
   aspect-ratio: 16 / 10;
