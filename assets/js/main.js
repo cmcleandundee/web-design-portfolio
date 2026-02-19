@@ -42,6 +42,7 @@ function initVinylDrag() {
   let frameId = null;
 
   const MAX_RELEASE_VELOCITY = 1080; // deg/s
+  const ACCELERATION_SCALE = 0.5;
   const VELOCITY_BLEND = 0.35;
   const DECAY_PER_SECOND = 0.68;
   const STOP_THRESHOLD = 6;
@@ -134,7 +135,7 @@ function initVinylDrag() {
     const angleDelta = normalizeDelta(currentAngle - lastAngle);
     const now = performance.now();
     const deltaMs = Math.max(now - lastMoveTime, 1);
-    const instantVelocity = (angleDelta / deltaMs) * 1000;
+    const instantVelocity = (angleDelta / deltaMs) * 1000 * ACCELERATION_SCALE;
     dragVelocity = dragVelocity * (1 - VELOCITY_BLEND) + instantVelocity * VELOCITY_BLEND;
 
     setManualRotation(manualRotation + angleDelta);
