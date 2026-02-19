@@ -35,6 +35,18 @@
         </div>
         <h1 class="display-5 mb-3">Liam Gallagher</h1>
         <a class="btn btn-accent btn-lg px-4" href="portfolio.html">View Work</a>
+        <div class="audio-panel mx-auto mt-4" aria-label="Slide Away audio controls">
+          <p class="audio-now-playing mb-2">Now Playing: Slide Away (Preview)</p>
+          <div class="audio-controls d-flex align-items-center justify-content-center gap-3">
+            <button id="audioMuteToggle" class="btn btn-sm btn-outline-light" type="button" aria-pressed="false">Mute</button>
+            <label class="visually-hidden" for="audioVolumeRange">Volume</label>
+            <input id="audioVolumeRange" class="form-range m-0" type="range" min="0" max="1" step="0.05" value="0.5">
+          </div>
+          <p id="audioStatusText" class="audio-status mt-2 mb-0">Connecting audio...</p>
+        </div>
+        <audio id="slideAwayAudio" preload="none" loop playsinline>
+          <source src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/db/5e/e8/db5ee8c8-5018-6245-5476-665fdb3fbeac/mzaf_12235809280652988610.plus.aac.p.m4a" type="audio/mp4">
+        </audio>
       </div>
     </section>
   </main>

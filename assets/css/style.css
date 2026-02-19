@@ -57,6 +57,38 @@ body {
   min-height: calc(100vh - 78px);
 }
 
+.audio-panel {
+  max-width: 480px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid #4a4a4a;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+
+.audio-now-playing {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.audio-panel .btn-outline-light {
+  border-color: #767676;
+}
+
+.audio-panel .btn-outline-light:hover,
+.audio-panel .btn-outline-light:focus-visible {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.audio-controls .form-range {
+  width: min(220px, 45vw);
+}
+
+.audio-status {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
 .vinyl-wrap {
   width: min(72vw, 320px);
   margin: 0 auto 1.75rem;

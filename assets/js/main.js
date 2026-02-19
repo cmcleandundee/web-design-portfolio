@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initVinylDrag();
+  initSlideAwayAudio();
 });
 
 function initVinylDrag() {
@@ -172,4 +173,103 @@ function initVinylDrag() {
   window.addEventListener('pointermove', dragSpin);
   window.addEventListener('pointerup', stopDrag);
   window.addEventListener('pointercancel', stopDrag);
+}
+
+function initSlideAwayAudio() {
+  const audio = document.getElementById('slideAwayAudio');
+  const muteToggle = document.getElementById('audioMuteToggle');
+  const volumeRange = document.getElementById('audioVolumeRange');
+  const statusText = document.getElementById('audioStatusText');
+  if (!audio || !muteToggle || !volumeRange || !statusText) {
+    return;
+  }
+
+  const setStatus = (message) => {
+    statusText.textContent = message;
+  };
+
+  const syncMuteButton = () => {
+    const mutedState = audio.muted || audio.volume === 0;
+    muteToggle.textContent = mutedState ? 'Unmute' : 'Mute';
+    muteToggle.setAttribute('aria-pressed', String(!mutedState));
+  };
+
+  const setVolume = (value) => {
+    const nextVolume = Math.min(1, Math.max(0, value));
+    audio.volume = nextVolume;
+    audio.muted = nextVolume === 0;
+    syncMuteButton();
+  };
+
+  const tryStartPlayback = async () => {
+    try {
+      await audio.play();
+      setStatus('Playing');
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  setVolume(Number(volumeRange.value || 0.5));
+
+  volumeRange.addEventListener('input', () => {
+    setVolume(Number(volumeRange.value));
+    if (audio.paused) {
+      audio.play().catch(() => {});
+    }
+    setStatus(audio.muted ? 'Muted' : 'Playing');
+  });
+
+  muteToggle.addEventListener('click', async () => {
+    if (audio.muted || audio.volume === 0) {
+      if (audio.volume === 0) {
+        volumeRange.value = '0.5';
+        audio.volume = 0.5;
+      }
+      audio.muted = false;
+      if (audio.paused) {
+        await audio.play().catch(() => {});
+      }
+      setStatus('Playing');
+    } else {
+      audio.muted = true;
+      setStatus('Muted');
+    }
+    syncMuteButton();
+  });
+
+  audio.addEventListener('play', () => {
+    setStatus(audio.muted ? 'Playing (muted)' : 'Playing');
+  });
+
+  audio.addEventListener('pause', () => {
+    setStatus('Paused');
+  });
+
+  (async () => {
+    let started = await tryStartPlayback();
+    if (!started) {
+      audio.muted = true;
+      syncMuteButton();
+      started = await tryStartPlayback();
+      if (started) {
+        setStatus('Playing (muted by browser policy)');
+      } else {
+        setStatus('Tap anywhere to start audio');
+      }
+    }
+
+    if (!started) {
+      const unlock = async () => {
+        window.removeEventListener('pointerdown', unlock);
+        await audio.play().then(() => {
+          setStatus(audio.muted ? 'Playing (muted)' : 'Playing');
+        }).catch(() => {
+          setStatus('Audio blocked by browser');
+        });
+      };
+      window.addEventListener('pointerdown', unlock, { once: true });
+    }
+  })();
 }
