@@ -240,23 +240,30 @@ body {
   border-radius: 999px;
 }
 
-.headline-links {
-  margin: 0;
+.news-section {
+  border: 1px solid #4a4a4a;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 0.7rem;
 }
 
-.headline-links li {
-  margin-bottom: 0.3rem;
-}
-
-.headline-links a {
+.news-title {
   color: #ffffff;
-  text-decoration: underline;
-  text-decoration-color: #7f7f7f;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.headline-links a:hover,
-.headline-links a:focus-visible {
-  text-decoration-color: #ffffff;
+.news-buttons .btn {
+  white-space: normal;
+  line-height: 1.3;
+  border-color: #6b6b6b;
+}
+
+.news-buttons .btn:hover,
+.news-buttons .btn:focus-visible {
+  border-color: #ffffff;
 }
 
 .album-history {
