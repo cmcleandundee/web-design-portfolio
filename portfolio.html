@@ -30,33 +30,213 @@
   <main class="py-5">
     <section>
       <div class="container">
-        <h1 class="h2 mb-4">Portfolio</h1>
+        <h1 class="h2 mb-2">Discography</h1>
+        <p class="text-secondary mb-4">A repeatable album-card grid featuring key Oasis releases.</p>
         <div class="row g-4">
-          <div class="col-12 col-md-4">
-            <article class="card project-card h-100">
-              <img class="project-image" src="assets/images/definitely-maybe.jpg" alt="Definitely Maybe album cover">
-              <h2 class="h5">Definitely Maybe</h2>
-              <p class="mb-0">Oasis debut album released in 1994, known for defining early Britpop energy and attitude.</p>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card project-card album-card h-100">
+              <img class="project-image" src="assets/images/definitely-maybe.jpg" alt="Definitely Maybe album cover" loading="lazy">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h2 class="h5 mb-0">Definitely Maybe</h2>
+                <span class="album-year">1994</span>
+              </div>
+              <p class="small text-secondary mb-2">Top Tracks</p>
+              <ul class="top-tracks list-unstyled mb-3">
+                <li>Supersonic</li>
+                <li>Live Forever</li>
+                <li>Cigarettes &amp; Alcohol</li>
+              </ul>
+              <div class="album-tags mb-3">
+                <span class="badge">Britpop</span>
+                <span class="badge">Raw</span>
+                <span class="badge">Anthemic</span>
+              </div>
+              <div class="album-actions mt-auto d-flex gap-2">
+                <button class="btn btn-sm btn-outline-light w-50" type="button" data-bs-toggle="modal" data-bs-target="#tracklistDefinitelyMaybe">Tracklist</button>
+                <button class="btn btn-sm btn-accent w-50" type="button" data-bs-toggle="modal" data-bs-target="#listenDefinitelyMaybe">Listen</button>
+              </div>
             </article>
           </div>
-          <div class="col-12 col-md-4">
-            <article class="card project-card h-100">
-              <img class="project-image" src="assets/images/whats-the-story-morning-glory.jpg" alt="(What's the Story) Morning Glory? album cover">
-              <h2 class="h5">(What's the Story) Morning Glory?</h2>
-              <p class="mb-0">The 1995 follow-up featuring major anthems and the breakthrough sound that made Oasis global.</p>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card project-card album-card h-100">
+              <img class="project-image" src="assets/images/whats-the-story-morning-glory.jpg" alt="(What's the Story) Morning Glory? album cover" loading="lazy">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h2 class="h5 mb-0">(What's the Story) Morning Glory?</h2>
+                <span class="album-year">1995</span>
+              </div>
+              <p class="small text-secondary mb-2">Top Tracks</p>
+              <ul class="top-tracks list-unstyled mb-3">
+                <li>Wonderwall</li>
+                <li>Don't Look Back in Anger</li>
+                <li>Champagne Supernova</li>
+              </ul>
+              <div class="album-tags mb-3">
+                <span class="badge">Britpop</span>
+                <span class="badge">Classic</span>
+                <span class="badge">Melodic</span>
+              </div>
+              <div class="album-actions mt-auto d-flex gap-2">
+                <button class="btn btn-sm btn-outline-light w-50" type="button" data-bs-toggle="modal" data-bs-target="#tracklistMorningGlory">Tracklist</button>
+                <button class="btn btn-sm btn-accent w-50" type="button" data-bs-toggle="modal" data-bs-target="#listenMorningGlory">Listen</button>
+              </div>
             </article>
           </div>
-          <div class="col-12 col-md-4">
-            <article class="card project-card h-100">
-              <img class="project-image" src="assets/images/be-here-now.jpg" alt="Be Here Now album cover">
-              <h2 class="h5">Be Here Now</h2>
-              <p class="mb-0">Released in 1997, this album leans into a larger, louder production style and arena rock scale.</p>
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card project-card album-card h-100">
+              <img class="project-image" src="assets/images/be-here-now.jpg" alt="Be Here Now album cover" loading="lazy">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h2 class="h5 mb-0">Be Here Now</h2>
+                <span class="album-year">1997</span>
+              </div>
+              <p class="small text-secondary mb-2">Top Tracks</p>
+              <ul class="top-tracks list-unstyled mb-3">
+                <li>D'You Know What I Mean?</li>
+                <li>Stand by Me</li>
+                <li>All Around the World</li>
+              </ul>
+              <div class="album-tags mb-3">
+                <span class="badge">Loud</span>
+                <span class="badge">Psychedelic</span>
+                <span class="badge">Arena Rock</span>
+              </div>
+              <div class="album-actions mt-auto d-flex gap-2">
+                <button class="btn btn-sm btn-outline-light w-50" type="button" data-bs-toggle="modal" data-bs-target="#tracklistBeHereNow">Tracklist</button>
+                <button class="btn btn-sm btn-accent w-50" type="button" data-bs-toggle="modal" data-bs-target="#listenBeHereNow">Listen</button>
+              </div>
             </article>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="modal fade" id="tracklistDefinitelyMaybe" tabindex="-1" aria-labelledby="tracklistDefinitelyMaybeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content dark-modal">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="tracklistDefinitelyMaybeLabel">Definitely Maybe - Tracklist</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ol class="tracklist">
+            <li>Rock 'n' Roll Star</li>
+            <li>Shakermaker</li>
+            <li>Live Forever</li>
+            <li>Up in the Sky</li>
+            <li>Columbia</li>
+            <li>Supersonic</li>
+            <li>Bring It on Down</li>
+            <li>Cigarettes &amp; Alcohol</li>
+            <li>Digsy's Dinner</li>
+            <li>Slide Away</li>
+            <li>Married with Children</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="listenDefinitelyMaybe" tabindex="-1" aria-labelledby="listenDefinitelyMaybeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content dark-modal">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="listenDefinitelyMaybeLabel">Listen: Definitely Maybe</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed?listType=search&amp;list=Oasis+Definitely+Maybe+full+album" title="Definitely Maybe listening embed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="tracklistMorningGlory" tabindex="-1" aria-labelledby="tracklistMorningGloryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content dark-modal">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="tracklistMorningGloryLabel">(What's the Story) Morning Glory? - Tracklist</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ol class="tracklist">
+            <li>Hello</li>
+            <li>Roll with It</li>
+            <li>Wonderwall</li>
+            <li>Don't Look Back in Anger</li>
+            <li>Hey Now!</li>
+            <li>The Swamp Song (Excerpt 1)</li>
+            <li>Some Might Say</li>
+            <li>Cast No Shadow</li>
+            <li>She's Electric</li>
+            <li>Morning Glory</li>
+            <li>The Swamp Song (Excerpt 2)</li>
+            <li>Champagne Supernova</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="listenMorningGlory" tabindex="-1" aria-labelledby="listenMorningGloryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content dark-modal">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="listenMorningGloryLabel">Listen: (What's the Story) Morning Glory?</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed?listType=search&amp;list=Oasis+What%27s+the+Story+Morning+Glory+full+album" title="Morning Glory listening embed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="tracklistBeHereNow" tabindex="-1" aria-labelledby="tracklistBeHereNowLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content dark-modal">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="tracklistBeHereNowLabel">Be Here Now - Tracklist</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ol class="tracklist">
+            <li>D'You Know What I Mean?</li>
+            <li>My Big Mouth</li>
+            <li>Magic Pie</li>
+            <li>Stand by Me</li>
+            <li>I Hope, I Think, I Know</li>
+            <li>The Girl in the Dirty Shirt</li>
+            <li>Fade In-Out</li>
+            <li>Don't Go Away</li>
+            <li>Be Here Now</li>
+            <li>All Around the World</li>
+            <li>It's Gettin' Better (Man!!)</li>
+            <li>All Around the World (Reprise)</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="listenBeHereNow" tabindex="-1" aria-labelledby="listenBeHereNowLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content dark-modal">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="listenBeHereNowLabel">Listen: Be Here Now</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed?listType=search&amp;list=Oasis+Be+Here+Now+full+album" title="Be Here Now listening embed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer py-4 mt-auto">
     <div class="container text-center">
