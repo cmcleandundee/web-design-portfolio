@@ -212,6 +212,8 @@ function initSlideAwayAudio() {
   };
 
   setVolume(Number(volumeRange.value || 0.5));
+  audio.muted = false;
+  syncMuteButton();
 
   volumeRange.addEventListener('input', () => {
     setVolume(Number(volumeRange.value));
@@ -248,23 +250,15 @@ function initSlideAwayAudio() {
   });
 
   (async () => {
-    let started = await tryStartPlayback();
+    const started = await tryStartPlayback();
     if (!started) {
-      audio.muted = true;
-      syncMuteButton();
-      started = await tryStartPlayback();
-      if (started) {
-        setStatus('Playing (muted by browser policy)');
-      } else {
-        setStatus('Tap anywhere to start audio');
-      }
-    }
-
-    if (!started) {
+      setStatus('Tap anywhere to start audio');
       const unlock = async () => {
         window.removeEventListener('pointerdown', unlock);
         await audio.play().then(() => {
-          setStatus(audio.muted ? 'Playing (muted)' : 'Playing');
+          audio.muted = false;
+          syncMuteButton();
+          setStatus('Playing');
         }).catch(() => {
           setStatus('Audio blocked by browser');
         });
