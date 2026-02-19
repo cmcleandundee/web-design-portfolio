@@ -35,7 +35,16 @@ function initVinylDrag() {
 
   let isDragging = false;
   let lastAngle = 0;
+  let lastMoveTime = 0;
   let manualRotation = 0;
+  let dragVelocity = 0;
+  let inertiaVelocity = 0;
+  let frameId = null;
+
+  const MAX_RELEASE_VELOCITY = 1080; // deg/s
+  const VELOCITY_BLEND = 0.35;
+  const DECAY_PER_SECOND = 0.68;
+  const STOP_THRESHOLD = 6;
 
   const getAngle = (event) => {
     const rect = vinylWrap.getBoundingClientRect();
@@ -54,13 +63,59 @@ function initVinylDrag() {
     return delta;
   };
 
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+  const setManualRotation = (rotation) => {
+    manualRotation = rotation;
+    vinylRecord.style.setProperty('--drag-rotation', `${manualRotation}deg`);
+  };
+
+  const stopInertiaLoop = () => {
+    if (frameId !== null) {
+      cancelAnimationFrame(frameId);
+      frameId = null;
+    }
+  };
+
+  const startInertiaLoop = () => {
+    if (frameId !== null) {
+      return;
+    }
+
+    let prevTime = performance.now();
+    const tick = (now) => {
+      const deltaSeconds = Math.min((now - prevTime) / 1000, 0.05);
+      prevTime = now;
+
+      if (!isDragging && Math.abs(inertiaVelocity) > 0) {
+        setManualRotation(manualRotation + inertiaVelocity * deltaSeconds);
+        inertiaVelocity *= Math.pow(DECAY_PER_SECOND, deltaSeconds);
+        if (Math.abs(inertiaVelocity) < STOP_THRESHOLD) {
+          inertiaVelocity = 0;
+        }
+      }
+
+      if (isDragging || Math.abs(inertiaVelocity) > 0) {
+        frameId = requestAnimationFrame(tick);
+      } else {
+        frameId = null;
+      }
+    };
+
+    frameId = requestAnimationFrame(tick);
+  };
+
   const startDrag = (event) => {
     if (event.button !== undefined && event.button !== 0) {
       return;
     }
 
+    stopInertiaLoop();
+    inertiaVelocity = 0;
+    dragVelocity = 0;
     isDragging = true;
     lastAngle = getAngle(event);
+    lastMoveTime = performance.now();
     vinylWrap.classList.add('dragging');
 
     if (event.pointerId !== undefined && vinylWrap.setPointerCapture) {
@@ -77,9 +132,14 @@ function initVinylDrag() {
 
     const currentAngle = getAngle(event);
     const angleDelta = normalizeDelta(currentAngle - lastAngle);
-    manualRotation += angleDelta;
-    vinylRecord.style.setProperty('--drag-rotation', `${manualRotation}deg`);
+    const now = performance.now();
+    const deltaMs = Math.max(now - lastMoveTime, 1);
+    const instantVelocity = (angleDelta / deltaMs) * 1000;
+    dragVelocity = dragVelocity * (1 - VELOCITY_BLEND) + instantVelocity * VELOCITY_BLEND;
+
+    setManualRotation(manualRotation + angleDelta);
     lastAngle = currentAngle;
+    lastMoveTime = now;
   };
 
   const stopDrag = (event) => {
@@ -96,6 +156,14 @@ function initVinylDrag() {
       } catch {
         // Safe fallback for browsers that reject release when pointer is already gone.
       }
+    }
+
+    inertiaVelocity = clamp(dragVelocity, -MAX_RELEASE_VELOCITY, MAX_RELEASE_VELOCITY);
+    dragVelocity = 0;
+    if (Math.abs(inertiaVelocity) >= STOP_THRESHOLD) {
+      startInertiaLoop();
+    } else {
+      inertiaVelocity = 0;
     }
   };
 
