@@ -154,6 +154,60 @@ body {
   border: 1px solid var(--border);
 }
 
+.album-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.album-card h2 {
+  color: #ffffff;
+}
+
+.album-year {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  border: 1px solid #474747;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  line-height: 1;
+}
+
+.top-tracks {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.top-tracks li {
+  padding-left: 0.95rem;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+
+.top-tracks li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.album-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.album-tags .badge {
+  background-color: rgba(255, 255, 255, 0.09);
+  border: 1px solid #474747;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.album-actions .btn {
+  border-radius: 999px;
+}
+
 .project-image {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -180,6 +234,31 @@ body {
 .site-footer {
   border-top: 1px solid var(--border);
   color: var(--text-soft);
+}
+
+.dark-modal {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.dark-modal .modal-header,
+.dark-modal .modal-footer {
+  border-color: var(--border);
+}
+
+.dark-modal .btn-close {
+  filter: invert(1) grayscale(100%);
+}
+
+.tracklist {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-soft);
+}
+
+.tracklist li {
+  margin-bottom: 0.35rem;
 }
 
 @keyframes spin {
