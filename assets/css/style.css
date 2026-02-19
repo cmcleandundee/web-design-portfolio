@@ -175,7 +175,7 @@ body {
 
 .top-tracks {
   margin: 0;
-  color: var(--text-soft);
+  color: #ffffff;
 }
 
 .top-tracks li {
@@ -254,7 +254,7 @@ body {
 .tracklist {
   margin: 0;
   padding-left: 1.15rem;
-  color: var(--text-soft);
+  color: #ffffff;
 }
 
 .tracklist li {
